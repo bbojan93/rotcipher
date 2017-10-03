@@ -1,4 +1,4 @@
-#Rotational Cipher
+# Rotational Cipher
 
 The Rotational or Ceasar cipher is a simple shift cipher that relies on transposing all the
 letters in the alphabet using an integer key between 0 and 26. Using a key of 0
