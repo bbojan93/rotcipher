@@ -1,53 +1,69 @@
 require 'rot_cipher'
 
 describe StringCipher do
-  describe ".cipher" do
+
+  describe "#cipher" do
 
     context "rotating when key 0 is given" do
       it "returns the same string" do
-        expect(StringCipher.cipher("Cool", 0)).to eql("Cool")
+        stringCipher = StringCipher.new(0)
+        expect(stringCipher.cipher("Cool")).to eql("Cool")
       end
     end
 
     context "rotating when key 26 is given" do
       it "returns the same string" do
-        expect(StringCipher.cipher("trl", 26)).to eql("trl")
+        stringCipher = StringCipher.new(26)
+        expect(stringCipher.cipher("trl")).to eql("trl")
       end
     end
 
     context "rotating when key 13 is given" do
       it "returns rotated string by 13" do
-        expect(StringCipher.cipher("dhvpx", 13)).to eql("quick")
+        stringCipher = StringCipher.new(13)
+        expect(stringCipher.cipher("dhvpx")).to eql("quick")
       end
     end
 
     context "rotating when key 5 is given" do
       it "returns rotated string by 5" do
-        expect(StringCipher.cipher("omg", 5)).to eql("trl")
+        stringCipher = StringCipher.new(5)
+        expect(stringCipher.cipher("omg")).to eql("trl")
       end
     end
 
     context "rotating punctuation" do
       it "returns the same punctuation" do
-        expect(StringCipher.cipher("hello, world", 1)).to eql("ifmmp, xpsme")
+        stringCipher = StringCipher.new(1)
+        expect(stringCipher.cipher("hello, world")).to eql("ifmmp, xpsme")
       end
     end
 
     context "rotating spaces" do
       it "returns spaces" do
-        expect(StringCipher.cipher("O M G", 5)).to eql("T R L")
+        stringCipher = StringCipher.new(5)
+        expect(stringCipher.cipher("O M G")).to eql("T R L")
       end
     end
 
     context "rotating numbers" do
       it "returns the same number" do
-        expect(StringCipher.cipher("20", 4)).to eql("20")
+        stringCipher = StringCipher.new(4)
+        expect(stringCipher.cipher("20")).to eql("20")
       end
     end
 
     context "rotating capital letters" do
       it "returns rotated capital letter" do
-        expect(StringCipher.cipher("OMG", 5)).to eql("TRL")
+        stringCipher = StringCipher.new(5)
+        expect(stringCipher.cipher("OMG")).to eql("TRL")
+      end
+    end
+
+    context "rotating all letters" do
+      it "returns rotated letters" do
+        stringCipher = StringCipher.new(13)
+        expect(stringCipher.cipher("The quick brown fox jumps over the lazy dog.")).to eql("Gur dhvpx oebja sbk whzcf bire gur ynml qbt.")
       end
     end
 
