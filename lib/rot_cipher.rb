@@ -11,7 +11,7 @@ class StringCipher
 
     string.each_char do |char|
 
-      if char !~ /\w/ || char  =~ /\d/
+      if char !~ /\w/ || char =~ /\d/
         newstring += char
       end
 
@@ -26,7 +26,7 @@ class StringCipher
       end
 
     end
-
+    return newstring
   end
 
 end
